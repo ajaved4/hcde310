@@ -28,7 +28,9 @@ def results():
     if books is None:
         return render_template("home.html", message="We couldn't reach the book service. Please try again.")
 
-    # 5. No results, or nothing useful to show? → home page + message
+    # 5. No results, or nothing useful to show? → home page + message'
+    if len(books) == 0:
+        return render_template("home.html", message="No books found for that author. Check the spelling or try another name.")
 
     # 6. Otherwise → results page
     return render_template("results.html", books=books, author=author)
