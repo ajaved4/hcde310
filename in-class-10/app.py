@@ -27,7 +27,12 @@ def results():
     # 4. API error? (get_books returned None) → home page + message
     if books is None:
         return render_template("home.html", message="We couldn't reach the book service. Please try again.")
-
+# keep only books that have a title
+    good_books = []
+    for book in books:
+        if book.get("title"):
+            good_books.append(book)
+    books = good_books
     # 5. No results, or nothing useful to show? → home page + message'
     if len(books) == 0:
         return render_template("home.html", message="No books found for that author. Check the spelling or try another name.")

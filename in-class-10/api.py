@@ -28,12 +28,6 @@ FAKE_DATA = FAKE_MISSING_FIELDS
 
 
 def get_books(author):
-        # keep only books that have a title
-    good_books = []
-    for book in books:
-        if book.get("title"):
-            good_books.append(book)
-    books = good_books
     # Fake for now. When the path works, switch app.py to get_books_real().
     return FAKE_DATA
 
