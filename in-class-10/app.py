@@ -25,6 +25,8 @@ def results():
     books = get_books(author)
 
     # 4. API error? (get_books returned None) → home page + message
+    if books is None:
+        return render_template("home.html", message="We couldn't reach the book service. Please try again.")
 
     # 5. No results, or nothing useful to show? → home page + message
 
