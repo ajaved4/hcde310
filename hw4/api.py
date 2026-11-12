@@ -18,19 +18,17 @@ FAKE_ERROR = None    # API call failed
 FAKE_DATA = FAKE_ART
 
 
-def search_art(term):
-    # Fake for now. Later this calls the real API.
-    return FAKE_DATA
+
 
 
 # ---- Next step: the real call ----
 # try/except (Class 10) is OPTIONAL for HW4: a status code check is enough.
 # It catches the case where the API never answers: no wifi, wrong domain, too slow.
-def get_books_real(author):
+def search_art(term):
     try:
         # timeout=10: stop waiting after 10 seconds instead of hanging forever
-        r = requests.get(URL, params={"author": author}, timeout=10,
-                         headers={"User-Agent": "HCDE310 books app"})
+        r = requests.get(URL, params={"q": term, "fields": "id,title,artist_title"}, timeout=10,
+                         headers={"AIC-User-Agent": "hcde310-hw4(ajaved4@uw.edu)"})
     except requests.RequestException:
         # No answer at all. There's no status code to check, so return None
         print("API error: no answer")     # for you, in the terminal
@@ -41,4 +39,4 @@ def get_books_real(author):
         print("API error:", r.status_code, r.reason)
         return None
 
-    return r.json()["docs"][:10]          # [:10] = the first 10 books
+    return r.json()["data"]          
