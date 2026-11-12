@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
-<head><title>Books by {{ author }}</title></head>
+<head><title>Results for "{{term}}"</title></head>
 <body>
-  <h1>Books by {{ author }}</h1>
+  <h1>Results for "{{term}}"</h1>
   <ul>
-  {% for book in books %}
-    <li>{{ book.title }}</li>
+  {% for artwork in artworks %}
+    <li>{{ artwork.title }} by {{ artwork.artist_title }}</li>
   {% endfor %}
   </ul>
   <a href="/">New search</a>

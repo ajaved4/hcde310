@@ -2,7 +2,6 @@
 (photo of your 2 paper screens)
 
 ## 2. Data
-(the fields you'll show, and where each one is in the JSON)
 Fields I need for the results page:
 
 - **title**
@@ -16,12 +15,8 @@ Fields I need for the results page:
   - If missing, show: "Unknown artist"
 
 ## 3. Specs
-### search_art(term)
-### / route
-### /results route
 
 ### search_art(term)
-(each one: what goes in, what comes out, 2–3 checks)
 - In: the search word the user typed (e.g. "monet")
 - Out:
   - a list of artworks if it finds some

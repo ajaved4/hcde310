@@ -1,34 +1,25 @@
-# api.py: will call Open Library for books by an author.
-# SKELETON: get_books() returns fake data for now, so the whole path works before the API does.
+# api.py: will call the Art Institute of Chicago API to search for artworks.
+# SKELETON: search_art() returns fake data for now, so the whole path works before the API does.
 import requests
 
-URL = "https://openlibrary.org/search.json"
+URL = "https://api.artic.edu/api/v1/artworks/search"
 
-# Fake data, same shape as the real API's "docs" list.
-# One variable per case, so you can check how your page handles each one.
-FAKE_BOOKS = [
-    {"title": "Fake Book One", "first_publish_year": 2001},
-    {"title": "Fake Book Two", "first_publish_year": 2002},
-    {"title": "Fake Book Three", "first_publish_year": 2003},
+# Fake data, same shape as the real API's "data" list.
+FAKE_ART = [
+    {"title": "Fake Art One", "artist_title": "Montgomery"},
+    {"title": "Fake Art Two", "artist_title": "Baldman"},
+    {"title": "Fake Art Three", "artist_title": None},   # missing artist
 ]
 
-FAKE_EMPTY = []                                           # no results
-
-FAKE_MISSING_FIELDS = [
-    {"title": "Fake Book One", "first_publish_year": 2001},
-    {"title": "Fake Book Two"},                           # no year
-    {"title": None, "first_publish_year": 2003},          # title is there, but null
-    {"first_publish_year": 2004},                         # no title at all
-]
-
-FAKE_ERROR = None                                         # what get_books_real() returns when the call fails
+FAKE_EMPTY = []      # no results
+FAKE_ERROR = None    # API call failed
 
 # Change this line to try a different case
-FAKE_DATA = FAKE_MISSING_FIELDS
+FAKE_DATA = FAKE_ART
 
 
-def get_books(author):
-    # Fake for now. When the path works, switch app.py to get_books_real().
+def search_art(term):
+    # Fake for now. Later this calls the real API.
     return FAKE_DATA
 
 
