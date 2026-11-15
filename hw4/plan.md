@@ -46,3 +46,26 @@ Fields I need for the results page:
   1. Press Search with nothing typed → see "Type something to search…"
   2. Search a misspelled word like "xyzqq" → see "No artworks found…"
   3. Find a result with no artist → see "Unknown artist" (not "None")
+
+
+## 4. Check results
+
+### / route
+1. Open http://127.0.0.1:5001 → see title, label, search box and button: ✅ pass
+2. Press Tab → focus moves to the search box, then the button: ✅ pass
+
+### search_art(term)
+1. Search "monet" → see a list of real artworks: ✅ pass
+2. Search "xyzqq" → expected "No artworks found": ❌ fail. It still returned
+   results because the AIC search is fuzzy. Searched "12345678901234"
+   instead → "No artworks found… check the spelling": ✅ pass
+3. Break the URL on purpose → "We couldn't reach the Art Institute…": ✅ pass
+   (fixed the URL back after)
+
+### /results route
+1. Press Search with nothing typed → "Type a title, artist, or type to search": ✅ pass
+2. Search "sculpture" → results show up (searching by type works): ✅ pass
+3. Result with no artist → shows "Unknown artist" (not "None"): ✅ pass
+
+### Notes
+- Port 5000 didn't work on my Mac (AirPlay uses it), so I run the app on 5001.
