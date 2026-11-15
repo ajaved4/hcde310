@@ -21,9 +21,8 @@ FAKE_DATA = FAKE_ART
 
 
 
-# ---- Next step: the real call ----
-# try/except (Class 10) is OPTIONAL for HW4: a status code check is enough.
-# It catches the case where the API never answers: no wifi, wrong domain, too slow.
+# Asks the Art Institute API for artworks matching the search word.
+# Gives back a list of artworks, an empty list if nothing matches, or None if the call fails.
 def search_art(term):
     try:
         # timeout=10: stop waiting after 10 seconds instead of hanging forever

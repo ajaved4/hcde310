@@ -7,11 +7,15 @@ from api import search_art
 app = Flask(__name__)
 
 
+
+# Runs when someone opens the site (the "/" address).
+# Shows the search page so they can type what art they're looking for.
 @app.route("/")
 def home():
     return render_template("home.html")
 
-
+# Runs after the user presses Search. Shows matching artworks,
+# or sends them back to the search page with a message if something's wrong.
 @app.route("/results")
 def results():
     # 1. Read the search word from the form
