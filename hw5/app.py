@@ -10,7 +10,7 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/results", methods=["GET", "POST"])
+@app.route("/results", methods=["GET"])
 def results():
     artist = (request.values.get("artist") or "").strip()
     if not artist:
