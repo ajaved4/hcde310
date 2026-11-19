@@ -27,15 +27,15 @@ Answers to my two questions, in my own words:
 2. it takes whatever the user inputted either as a GET or a POST.
 
 ## 5. My fix
-What was wrong:
-What I changed:
-How I checked it works:
-Commit before: (hash)  Commit after: (hash)
+What was wrong: The search form used POST, so after searching the URL was just /results. You couldn't bookmark, share or refresh a search (my check 3 failed).
+What I changed: In home.html I changed method="post" to method="get", and in app.py line 13 I changed methods=["GET", "POST"] to methods=["GET"].
+How I checked it works: I ran git diff to see only those 2 lines changed, then ran the app and searched Monet. The URL now shows /results?artist=Monet. I also reran python3 -m pytest and all 3 tests still pass.
+Commit before: 01a8114  Commit after: af93bec
 
 ## 6. Can we ship it? (100–150 words)
-Yes or no, and why:
+Yes or no, and why: No.Honestly, I don’t think it’s ready yet. The tests pass and search does bring up art, but the big problem is that debug=True is still on, so anyone who hits an error page could run code on our server. The search is also misleading: a made-up word like “zxqwv” still shows 10 random artworks, and “/results” matched titles with “Result” because it searches all text, not just artists. On top of that, the images are broken and the artist’s name never shows up. None of it is hard to fix, but I’d want one more day to fix and retest before shipping.
 
-One thing my HW4 does better:
-One thing the AI's app does better:
+One thing my HW4 does better:  My HW4 uses GET, so searches show up in the URL and can be bookmarked, while the AI’s app used POST
+One thing the AI's app does better:  It has fallbacks like “Date unknown” and “No image available,” so missing data doesn’t break the page.
 
 AI use goes in `ai_use.md` (the five points on the AI Use Card).
